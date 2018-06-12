@@ -1,0 +1,8 @@
+<Context>
+	<Environment name="ueditorOSS.contextPath" type="java.lang.String" value="http://localhost:8680/"/>
+	<Environment name="ueditorOSS.endpoint" type="java.lang.String" value="oss-cn-shanghai.aliyuncs.com"/><!-- aliyun endpoint -->
+	<Environment name="ueditorOSS.accessId" type="java.lang.String" value="LTAIMkqpJZgQG7sm"/><!-- aliyun accessId -->
+	<Environment name="ueditorOSS.accessKey" type="java.lang.String" value="GMNJBsQ25OirAeNK3vY3d3sRu5FTsB"/><!-- aliyun accessKey -->
+	<Environment name="ueditorOSS.bucket" type="java.lang.String" value="img-wechat-xiyaoxiyao"/><!-- aliyun bucket -->
+	<Environment name="ueditorOSS.myPath" type="java.lang.String" value=""/><!-- aliyun myPath -->
+</Context>

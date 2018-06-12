@@ -1,0 +1,3 @@
+.inputImg { position: relative; height:140px; width:140px; }
+.inputImg input { height:140px; width:140px; }
+.uploadImg img { position: absolute; height:140px; width:140px; display: block; top:0; left:0;}

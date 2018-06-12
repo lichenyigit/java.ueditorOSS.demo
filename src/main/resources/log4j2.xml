@@ -1,0 +1,26 @@
+<configuration status="WARN">
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level %L %class{36} %M - %msg%xEx%n"/>
+        </Console>
+        <RollingFile name="RollingFile" fileName="../logs/java.ueditorOSS.demo.log"
+                     filePattern="${sys:catalina.base}/logs/${{yyyy-MM-dd}">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %L %class{36} %M - %msg%xEx%n"/>
+            <Policies>
+				<CronTriggeringPolicy schedule="0 0 0 * * ?"/>
+			</Policies>
+        </RollingFile>
+    </appenders>
+    
+    <loggers>
+    	<Logger name="java.ueditorOSS.demo" level="TRACE" additivity="false">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="RollingFile" />
+		</Logger>
+        <root level="TRACE">
+            <AppenderRef ref="Console" />
+			<AppenderRef ref="RollingLog" />
+        </root>
+    </loggers>
+</configuration>
