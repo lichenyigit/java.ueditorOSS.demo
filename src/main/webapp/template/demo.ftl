@@ -49,12 +49,14 @@
 
                                     <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
                                     <script type = "text/javascript" >
-                                    var um = UE.getEditor('editor', {
-                                        autoHeight: false,
-                                        imageActionName: "uploadimage", /* 执行上传图片的action名称 */
-                                        imageFieldName: "upfile", /* 提交的图片表单名称 */
-                                        imageMaxSize: 2048000, /* 上传大小限制，单位B */
-                                        imageAllowFiles: [".png", ".jpg", ".jpeg", ".gif", ".bmp"], /* 上传图片格式显示 */
+                                            //UE.getEditor('editor');
+                                    UE.getEditor('editor', {
+                                        allowDivTransToP: false
+                                        /*autoHeight: false,
+                                        imageActionName: "uploadimage", /!* 执行上传图片的action名称 *!/
+                                        imageFieldName: "upfile", /!* 提交的图片表单名称 *!/
+                                        imageMaxSize: 2048000, /!* 上传大小限制，单位B *!/
+                                        imageAllowFiles: [".png", ".jpg", ".jpeg", ".gif", ".bmp"], /!* 上传图片格式显示 *!/*/
                                     });
 
                                     function getContent() {
@@ -80,15 +82,10 @@
 
 </div>
 
-<script src="static/assets/js/amazeui.min.js"></script>
-<script src="static/assets/js/app.js"></script>
-<script type="text/javascript" src="static/js/plupload.full.min.js"></script>
-<script type="text/javascript" src="static/js/upload.js"></script>
-
 </body>
 <script>
     $(document).ready(function () {
-        um.addListener("ready", function () {
+        UE.getEditor('editor').addListener("ready", function () {
             setContent('');
         });
     });

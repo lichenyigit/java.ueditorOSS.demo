@@ -85,11 +85,11 @@ public class Listenner implements ServletContextListener {
 			Object value = request.getAttribute(name);
 			result.put(name, value);
 		}
-		try {
+		/*try {
 			logger.trace(JsonUtil.writeJson(result));
 		} catch (JsonConvertFailedException e) {
 			e.printStackTrace();
-		}
+		}*/
 		return result;
 	}
 	

@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ueditor.ActionEnter;
+import ueditorOSS.util.JsonUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,6 +29,11 @@ public class UeditorUploadImgServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			logger.info(JsonUtil.resquestParameter2Map(request));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		request.setCharacterEncoding( "utf-8" );
 		response.setHeader("Content-Type" , "text/html");
 		ActionEnter actionNew = new ActionEnter( request, rootPath, configJsonPath);
@@ -39,8 +45,17 @@ public class UeditorUploadImgServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
 		request.setCharacterEncoding( "utf-8" );
 		response.setHeader("Content-Type" , "text/html");
-        try { 	
-    		ActionEnter actionNew = new ActionEnter(request, rootPath, configJsonPath);
+        try {
+        	logger.info(rootPath);
+        	logger.info(configJsonPath);
+			logger.info(JsonUtil.resquestParameter2Map(request));
+			String source = request.getParameter("source[]");
+			ActionEnter actionNew;
+			if(!"".equals(source)){
+				actionNew = new ActionEnter(request, source, rootPath, configJsonPath);
+			}else{
+				actionNew = new ActionEnter(request, rootPath, configJsonPath);
+			}
     		logger.info(JSONObject.toJSONString(actionNew));
     		String result = actionNew.exec();
     		logger.info("图片上传成功");
@@ -50,5 +65,5 @@ public class UeditorUploadImgServlet extends HttpServlet {
         	logger.error(e.getMessage());
         }
     }
-	
+
 }
